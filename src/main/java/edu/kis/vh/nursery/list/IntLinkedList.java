@@ -3,8 +3,8 @@ public class IntLinkedList {
 
 
 	public static final int EMPTY = -1;
-	private Node last;
-	private int i;
+	public Node last;
+	public int i;
 
 	public void push(int i) {
 		if (last == null)
