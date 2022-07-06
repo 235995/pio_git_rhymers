@@ -1,60 +1,72 @@
 package edu.kis.vh.nursery;
 
 /**
- *
+ * klasa zajmująca się przehowywaniem oraz obsługą tablicy
  */
 
 public class DefaultCountingOutRhymer {
 	/**
-	 * @param in
+	 * Capacity przechowuje rozmiar tablicy
 	 */
 
 	public static final int CAPACITY = 12;
-	public static final int TOTAL = -1;
-	public static final int FULL = 11;
-	private final int[] NUMBERS = new int[CAPACITY];
-
-	private int total = -1;
+	/**
+	 * Empty stała odpawadjąca za zerowanie tablicy
+	 */
+	public static final int EMPTY = -1;
+	/**
+	 * tablica danych
+	 */
+	private final int[] numbers = new int[CAPACITY];
+	/**
+	 * ustawienie zmiennej total na -1
+	 */
+	private int total = EMPTY;
 
 	/**
-	 * @return
+	 * Zapisanie wartości do tablicy na następny indeks oraz zwiększenie total
+	 * @param in liczba która ma być wpisana do tablicy
 	 */
 
 	public void countIn(int in) {
 		if (!isFull())
-			NUMBERS[++total] = in;
+			numbers[++total] = in;
 	}
 
 	/**
-	 * @return
+	 *funkcja zwracająca true jeżeli tablica jest pusta
+	 * @return true jeśli tablica jest pusta
 	 */
 	public boolean callCheck() {
-		return total == TOTAL;
+		return total == EMPTY;
 	}
 	/**
-	 * @return
+	 * funkcja zwracająca true jeżeli tablica jest pełna
+	 * @return true jeśli tablica jest pełna
 	 */
 	public boolean isFull() {
 
-		return total == FULL;
+		return total == CAPACITY-1;
 	}
 
 	/**
-	 * @return
+	 * Funkcja zwraająca liczbe pod aktualnym indeksem
+	 * @return liczba z tablicy pod aktualnym indeksem
 	 */
 	public int peekaboo() {
 		if (callCheck())
-			return TOTAL;
-		return NUMBERS[total];
+			return EMPTY;
+		return numbers[total];
 	}
 
 	/**
-	 * @return
+	 * Funkcja zwracająca liczbę z pod akutalnego indeksu oraz mniejszająca indeks o 1
+	 * @return liczba z tablicy pod aktualnym indeksem
 	 */
 	public int countOut() {
 		if (callCheck())
-			return TOTAL;
-		return NUMBERS[total--];
+			return EMPTY;
+		return numbers[total--];
 	}
 
 
